@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    [SerializeField] private float jumpForce = 1f;  // ジャンプ力
+    // ジャンプ力
+    [SerializeField] private float jumpForce = 1f;
 
-    private Rigidbody2D rigid2D;  // プレイヤーのRigidbody2D
-
+    // プレイヤーのRigidbody2D
+    private Rigidbody2D rigid2D; 
     private bool isFalling = false;
 
     void Start()
