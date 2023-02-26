@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NewBehaviourScript : MonoBehaviour
 {
@@ -8,7 +9,12 @@ public class NewBehaviourScript : MonoBehaviour
     [SerializeField] private float jumpForce = 1f;
 
     // プレイヤーのRigidbody2D
-    private Rigidbody2D rigid2D; 
+    private Rigidbody2D rigid2D;
+
+    // メインカメラ
+    private GameObject mainCamera;
+
+    // 落下中か
     private bool isFalling = false;
 
     void Start()
@@ -21,6 +27,15 @@ public class NewBehaviourScript : MonoBehaviour
     {
         // 落下中かのフラグを更新する。
         isFalling = rigid2D.velocity.y < 0;
+
+        // メインカメラを取得
+        mainCamera = Camera.main.gameObject;
+
+        // メインカメラの範囲外に
+        if (transform.position.y < mainCamera.transform.position.y - 6)
+        {
+            SceneManager.LoadScene("ResuleScene");
+        }
     }
 
     // 当たった時に呼ばれる関数
