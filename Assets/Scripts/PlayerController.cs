@@ -31,10 +31,11 @@ public class NewBehaviourScript : MonoBehaviour
         // メインカメラを取得
         mainCamera = Camera.main.gameObject;
 
-        // メインカメラの範囲外に
+        // メインカメラの範囲外（下）に行った場合
         if (transform.position.y < mainCamera.transform.position.y - 6)
         {
-            SceneManager.LoadScene("ResuleScene");
+            // リザルト画面に遷移
+            SceneManager.LoadScene("ResultScene");
         }
     }
 
