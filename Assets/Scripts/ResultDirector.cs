@@ -5,15 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class ResultDirector : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    // リスタートボタンが押された時
+    public void OnRestartButtonClicked()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SceneManager.LoadScene("GameScene");
     }
 }
