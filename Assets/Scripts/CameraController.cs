@@ -1,25 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class CameraFollow : MonoBehaviour
 {
-    // 追従するオブジェクト
-    public Transform target;
-    // 追従速度
-    public float smoothSpeed = 0.125f;
-    // 追従位置のオフセット
-    public Vector3 offset; 
+    public GameObject target;  // 追従する対象のTransform
+    public float smoothing = 5f;  // 追従のスムージング係数
+    public float yOffset = 10f;  // カメラの高さオフセット
 
-    private void FixedUpdate()
+    private Rigidbody2D rb;
+    private Vector3 offset;  // カメラと対象の距離オフセット
+
+    void Start()
     {
-        // 追従位置を設定
-        Vector3 desiredPosition = target.position + offset; 
-        // 追従位置に徐々に移動
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-        // カメラが下方向に移動しないよう制限
-        smoothedPosition.y = Mathf.Max(smoothedPosition.y, transform.position.y);
-        // カメラを設定した追従位置に移動
-        transform.position = smoothedPosition; 
+        // カメラと対象の距離オフセットを計算
+        offset = transform.position - target.transform.position;
+        // カメラのX軸とZ軸を固定
+        offset.x = 0f;
+        offset.z = -10f;
+
+        rb  = target.GetComponent<Rigidbody2D>();
+    }
+
+    void FixedUpdate()
+    {
+        // プレイヤーが-Y方向に移動している場合、カメラの座標を更新する。
+        if (rb.velocity.y > 0)
+        {
+            // 追従する対象のY軸に追従する位置を計算
+            Vector3 targetCamPos = new Vector3(offset.x, target.transform.position.y + yOffset, offset.z);
+
+            // カメラの位置をスムージングして更新
+            transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
+        }
     }
 }

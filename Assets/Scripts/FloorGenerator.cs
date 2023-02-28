@@ -8,7 +8,7 @@ public class GenerateFloor : MonoBehaviour
     public float floorGap = 3.0f; // 床のY軸方向の間隔
     public float minX = 0.0f; // 床の最小X座標
     public float maxX = 5.0f; // 床の最大X座標
-    public int startFloorCount = 10; // 最初に生成する床の数
+    public int floorNum = 10; // 最初に生成する床の数
     public float startFloorY = 0.0f; // 最初に生成する床の位置のY座標
 
     private float playerHeight; // プレイヤーの高さ
@@ -18,7 +18,7 @@ public class GenerateFloor : MonoBehaviour
     private void Start()
     {
         lastFloorY = startFloorY;
-        for (int i = 0; i < startFloorCount; i++)
+        for (int i = 0; i < floorNum; i++)
         {
             GenerateNextFloor();
         }
@@ -28,7 +28,7 @@ public class GenerateFloor : MonoBehaviour
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         playerHeight = player.transform.position.y;
-        if (playerHeight > lastFloorY + floorGap)
+        if (floors.Count < floorNum)
         {
             GenerateNextFloor();
         }
