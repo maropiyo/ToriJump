@@ -2,34 +2,30 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public GameObject target;  // 追従する対象のTransform
-    public float smoothing = 5f;  // 追従のスムージング係数
-    public float yOffset = 10f;  // カメラの高さオフセット
+    public Transform playerTransform; // プレイヤーのTransform
+    public Vector3 offset; // プレイヤーからの距離（カメラの位置）
 
-    private Rigidbody2D rb;
-    private Vector3 offset;  // カメラと対象の距離オフセット
+    // プレイヤーの最高到達点
+    private float playerMaxPoint = 0;
 
     void Start()
     {
-        // カメラと対象の距離オフセットを計算
-        offset = transform.position - target.transform.position;
-        // カメラのX軸とZ軸を固定
-        offset.x = 0f;
-        offset.z = -10f;
-
-        rb  = target.GetComponent<Rigidbody2D>();
+        
     }
 
-    void FixedUpdate()
+    void LateUpdate()
     {
-        // プレイヤーが-Y方向に移動している場合、カメラの座標を更新する。
-        if (rb.velocity.y > 0)
-        {
-            // 追従する対象のY軸に追従する位置を計算
-            Vector3 targetCamPos = new Vector3(offset.x, target.transform.position.y + yOffset, offset.z);
+        // プレイヤーの最高到達点の更新を行う
+        playerMaxPoint = (playerMaxPoint < playerTransform.position.y) ? playerTransform.position.y : playerMaxPoint;
 
-            // カメラの位置をスムージングして更新
-            transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
-        }
+
+        // プレイヤーの
+        if (playerTransform.position.y < playerMaxPoint) return;
+
+        // プレイヤーのY座標とZ座標を追従する
+        Vector3 newPosition = new Vector3(transform.position.x, playerTransform.position.y, offset.z);
+
+        // カメラの位置を更新
+        transform.position = newPosition;
     }
 }
