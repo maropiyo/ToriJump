@@ -173,7 +173,7 @@ MonoBehaviour:
   minX: -2.2
   maxX: 2.2
   floorNum: 10
-  startFloorY: -3
+  startFloorY: -4
 --- !u!1001 &430632337
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -549,7 +549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 347a5bb875f0a41a3b28abde4995f5f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 2.5
   jumpForce: 380
 --- !u!114 &1048046966
 MonoBehaviour:
