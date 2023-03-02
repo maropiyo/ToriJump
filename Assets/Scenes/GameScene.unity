@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floorPrefab1: {fileID: 1247402064}
   floorPrefab2: {fileID: 7506451992129198861, guid: daf61aa52262b46bd9fbb13db4432dac, type: 3}
-  floorGap: 2
+  floorGap: 1.5
   minX: -2.2
   maxX: 2.2
   floorNum: 10
@@ -224,6 +224,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 292701801522581426, guid: 38395d955a5f4449bb29167d2eedb813, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 882287298107847749, guid: 38395d955a5f4449bb29167d2eedb813, type: 3}
+      propertyPath: m_UseAdjacentStartPoint
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2757942702363650340, guid: 38395d955a5f4449bb29167d2eedb813, type: 3}
@@ -473,7 +477,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.8
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -550,7 +554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2.5
-  jumpForce: 380
+  jumpForce: 450
 --- !u!114 &1048046966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -563,8 +567,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19cbb812b0d0e43a99966b6a763efbfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
-  isWrappingX: 0
 --- !u!61 &1048046967
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -594,7 +596,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
