@@ -35,15 +35,17 @@ public class GenerateFloor : MonoBehaviour
         RemoveFloor();
     }
 
+    // 次の床を生成する
     private void GenerateNextFloor()
     {
         float randomX = Random.Range(minX, maxX);
-        GameObject floorPrefab = Random.value > 0.5f ? floorPrefab1 : floorPrefab2;
+        GameObject floorPrefab = Random.value > 0.4f ? floorPrefab1 : floorPrefab2;
         GameObject newFloor = Instantiate(floorPrefab, new Vector3(randomX, lastFloorY + floorGap, 0), Quaternion.identity);
         floors.Add(newFloor);
         lastFloorY = newFloor.transform.position.y;
     }
 
+    // 床を削除する
     private void RemoveFloor()
     {
         for (int i = 0; i < floors.Count; i++)

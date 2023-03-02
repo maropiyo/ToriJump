@@ -12,8 +12,13 @@ public class NewBehaviourScript : MonoBehaviour
 
     // プレイヤーのRigidbody2D
     private Rigidbody2D rb;
+    // プレイヤーの横幅
+    private float objectWidth;
     // メインカメラ
-    private GameObject mainCamera;
+    private Camera mainCamera;
+    // 画面の横幅
+    private float screenWidth;
+
     // 落下中か
     private bool isFalling = false;
 
@@ -21,6 +26,8 @@ public class NewBehaviourScript : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         this.rb = GetComponent<Rigidbody2D>();
+        objectWidth = GetComponent<SpriteRenderer>().bounds.size.x;
+        mainCamera = Camera.main;
     }
 
     void Update()
@@ -30,15 +37,7 @@ public class NewBehaviourScript : MonoBehaviour
 
         MovePlayer();
 
-        // メインカメラを取得
-        mainCamera = Camera.main.gameObject;
-
-        // メインカメラの範囲外（下）に行った場合
-        if (transform.position.y < mainCamera.transform.position.y - 5.5)
-        {
-            // リザルト画面に遷移
-            SceneManager.LoadScene("ResultScene");
-        }
+        WrapObject();
     }
 
     // 衝突したとき
@@ -77,6 +76,16 @@ public class NewBehaviourScript : MonoBehaviour
         // Rigidbody2Dコンポーネントを取得して、プレイヤーに力を加える
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.AddForce(new Vector2(moveForce * moveSpeed, 0f));
+    }
+
+    private void WrapObject()
+    {
+        // メインカメラの範囲外（下）に行った場合
+        if (transform.position.y < mainCamera.gameObject.transform.position.y - 5.5)
+        {
+            // リザルト画面に遷移
+            SceneManager.LoadScene("ResultScene");
+        }
     }
 
 }

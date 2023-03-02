@@ -15,12 +15,11 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
+        // プレイヤーが最高到達点に辿りつかない場合
+        if (playerTransform.position.y < playerMaxPoint) return;
+
         // プレイヤーの最高到達点の更新を行う
         playerMaxPoint = (playerMaxPoint < playerTransform.position.y) ? playerTransform.position.y : playerMaxPoint;
-
-
-        // プレイヤーの
-        if (playerTransform.position.y < playerMaxPoint) return;
 
         // プレイヤーのY座標とZ座標を追従する
         Vector3 newPosition = new Vector3(transform.position.x, playerTransform.position.y, offset.z);
