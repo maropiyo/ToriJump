@@ -12,10 +12,8 @@ public class NewBehaviourScript : MonoBehaviour
 
     // プレイヤーのRigidbody2D
     private Rigidbody2D rb;
-
     // メインカメラ
     private GameObject mainCamera;
-
     // 落下中か
     private bool isFalling = false;
 
@@ -28,7 +26,7 @@ public class NewBehaviourScript : MonoBehaviour
     void Update()
     {
         // 落下中かのフラグを更新する。
-        isFalling = rb.velocity.y <= 0;
+        isFalling = rb.velocity.y < 0;
 
         MovePlayer();
 
@@ -43,30 +41,35 @@ public class NewBehaviourScript : MonoBehaviour
         }
     }
 
-    // 当たった時に呼ばれる関数
-    private void OnCollisionEnter2D(Collision2D collision)
+    // 衝突したとき
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("1");
-        // 接触したオブジェクトのタグが"JumpFloor"かつプレイヤーが落下中の場合
-        if (collision.gameObject.CompareTag("JumpFloor") && isFalling)
+        // 落下中でなければ
+        if (!isFalling) return;
+
+        // 接触したオブジェクトのタグが"JumpFloor"の場合
+        if (collision.gameObject.CompareTag("JumpFloor"))
         {
-            Debug.Log("2");
             // 上方向に力を加える
+            rb.velocity = Vector3.zero;
             rb.AddForce(transform.up * this.jumpForce);
         }
 
-        // 接触したオブジェクトのタグが"SuperJumpFloor"かつプレイヤーが落下中の場合
-        if (collision.gameObject.CompareTag("SuperJumpFloor") && isFalling) 
+        // 接触したオブジェクトのタグが"SuperJumpFloor"の場合
+        if (collision.gameObject.CompareTag("SuperJumpFloor"))
         {
-            // 上方向にジャンプ力の２倍の力を加える
-            rb.AddForce(transform.up * this.jumpForce * 1.5f);
+            // 上方向に力を加える
+            rb.velocity = Vector3.zero;
+            rb.AddForce(transform.up * this.jumpForce * 1.45f);
         }
     }
 
     void MovePlayer()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");  // 矢印キーの入力を取得
-        float moveTilt = Input.acceleration.x;                // スマホの傾きを取得
+        // 矢印キーの入力を取得
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        // スマホの傾きを取得
+        float moveTilt = Input.acceleration.x;
 
         // 横方向の力を計算
         float moveForce = moveHorizontal + moveTilt;
