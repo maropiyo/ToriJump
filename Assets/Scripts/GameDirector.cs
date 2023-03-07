@@ -1,27 +1,37 @@
-using TMPro;
+ï»¿using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameDirector : MonoBehaviour
 {
-    // ƒXƒRƒA
+    // ã‚¹ã‚³ã‚¢
     public static int score;
 
-    // ƒvƒŒƒCƒ„[‚ÌTransform
+    // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®Transform
     public Transform player;
-    // ƒXƒRƒA‚ÌƒeƒLƒXƒg
-    public TextMeshProUGUI scoreText;
-    // ƒƒCƒ“ƒJƒƒ‰
+    // ãƒ¡ã‚¤ãƒ³ã‚«ãƒ¡ãƒ©
     public Transform mainCamera;
+    // ã‚¹ã‚³ã‚¢ã®ãƒ†ã‚­ã‚¹ãƒˆ
+    public TextMeshProUGUI scoreText;
+    // ãƒã‚¤ã‚¹ã‚³ã‚¢ã®ãƒ†ã‚­ã‚¹ãƒˆ
+    public TextMeshProUGUI highScoreText;
 
-    // ŠJnˆÊ’u
+    // é–‹å§‹ä½ç½®
     private float playerStartPositionY;
+    // ãƒã‚¤ã‚¹ã‚³ã‚¢
+    private int highScore;
 
     void Start()
     {
-        // ƒtƒŒ[ƒ€ƒŒ[ƒg‚ğ60‚Éİ’è
+        // ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¬ãƒ¼ãƒˆã‚’60ã«è¨­å®š
         Application.targetFrameRate = 60;
-        // ƒvƒŒƒCƒ„[‚ÌŠJn‚‚³‚ğæ“¾
+        // ã‚¹ã‚³ã‚¢ã‚’ãƒªã‚»ãƒƒãƒˆ
+        score = 0;
+        // ãƒã‚¤ã‚¹ã‚³ã‚¢ã‚’å–å¾—
+        int highScore = PlayerPrefs.GetInt("HighScore", 0);
+        highScoreText.text = $"HighScore: {highScore}";
+
+        // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®é–‹å§‹é«˜ã•ã‚’å–å¾—
         playerStartPositionY = player.position.y;
     }
 
@@ -35,41 +45,38 @@ public class GameDirector : MonoBehaviour
 
     private void WrapObject()
     {
-        // ƒvƒŒƒCƒ„[‚ªƒƒCƒ“ƒJƒƒ‰‚Ì”ÍˆÍŠOi‰ºj‚És‚Á‚½ê‡
+        // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒãƒ¡ã‚¤ãƒ³ã‚«ãƒ¡ãƒ©ã®ç¯„å›²å¤–ï¼ˆä¸‹ï¼‰ã«è¡Œã£ãŸå ´åˆ
         if (player.position.y < mainCamera.position.y - 5.5)
         {
-            // ƒnƒCƒXƒRƒA‚ğXV‚·‚é
+            // ãƒã‚¤ã‚¹ã‚³ã‚¢ã‚’æ›´æ–°ã™ã‚‹
             UpdateHighScore();
 
-            // ƒŠƒUƒ‹ƒg‰æ–Ê‚É‘JˆÚ
+            // ãƒªã‚¶ãƒ«ãƒˆç”»é¢ã«é·ç§»
             SceneManager.LoadScene("ResultScene");
         }
     }
 
     private void UpdateScore()
     {
-        // ƒvƒŒƒCƒ„[‚ªŠJnˆÊ’u‚ğ’´‚¦‚é‚Ü‚Å‚Í‰½‚à‚µ‚È‚¢
+        // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒé–‹å§‹ä½ç½®ã‚’è¶…ãˆã‚‹ã¾ã§ã¯ä½•ã‚‚ã—ãªã„
         if (player.position.y < playerStartPositionY) return;
 
-        // ƒXƒRƒA‚ğæ“¾
+        // ã‚¹ã‚³ã‚¢ã‚’å–å¾—
         int currentScore = ((int)((player.position.y - playerStartPositionY) * 50));
 
-        // ƒXƒRƒA‚ªXV‚³‚ê‚½ê‡
+        // ã‚¹ã‚³ã‚¢ãŒæ›´æ–°ã•ã‚ŒãŸå ´åˆ
         if (currentScore > score)
         {
-            // ƒXƒRƒA‚ğXV‚·‚é
+            // ã‚¹ã‚³ã‚¢ã‚’æ›´æ–°ã™ã‚‹
             score = currentScore;
             scoreText.text = $"Score: {currentScore}";
         }
     }
 
-    // ƒnƒCƒXƒRƒA‚ğXV‚·‚é
+    // ãƒã‚¤ã‚¹ã‚³ã‚¢ã‚’æ›´æ–°ã™ã‚‹
     private void UpdateHighScore()
     {
-        // ƒnƒCƒXƒRƒA‚ğæ“¾‚·‚é
-        int highScore = PlayerPrefs.GetInt("HighScore", 0);
-
-        //  ƒXƒRƒA‚ªƒnƒCƒXƒRƒA‚æ‚è‚‚¯‚ê‚ÎƒnƒCƒXƒRƒA‚ğXV‚·‚é
+        //  ã‚¹ã‚³ã‚¢ãŒãƒã‚¤ã‚¹ã‚³ã‚¢ã‚ˆã‚Šé«˜ã‘ã‚Œã°ãƒã‚¤ã‚¹ã‚³ã‚¢ã‚’æ›´æ–°ã™ã‚‹
         if (score > highScore)
         {
             highScore = score;
