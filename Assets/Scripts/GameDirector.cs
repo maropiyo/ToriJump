@@ -28,8 +28,8 @@ public class GameDirector : MonoBehaviour
         // スコアをリセット
         score = 0;
         // ハイスコアを取得
-        int highScore = PlayerPrefs.GetInt("HighScore", 0);
-        highScoreText.text = $"HighScore: {highScore}";
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        highScoreText.text = $"High: {highScore}";
 
         // プレイヤーの開始高さを取得
         playerStartPositionY = player.position.y;
