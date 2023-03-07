@@ -1,10 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ResultDirector : MonoBehaviour
 {
+    // リザルトスコアのテキスト
+    public TextMeshProUGUI resultScoreText;
+    // ハイスコアのテキスト
+    public TextMeshProUGUI resultHighScoreText;
+
+    // ハイスコア
+    private int highScore;
+
+    private void Start()
+    {
+        // スコアを表示
+        resultScoreText.text = $"Score\n{GameDirector.score}";
+
+        // ハイスコアを取得して表示
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        resultHighScoreText.text = $"High: {highScore}";
+    }
+
     // リスタートボタンが押された時
     public void OnRestartButtonClicked()
     {
