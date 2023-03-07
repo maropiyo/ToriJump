@@ -8,11 +8,6 @@ public class CameraFollow : MonoBehaviour
     // プレイヤーの最高到達点
     private float playerMaxPoint = 0;
 
-    void Start()
-    {
-        
-    }
-
     void LateUpdate()
     {
         // プレイヤーが最高到達点に辿りつかない場合
