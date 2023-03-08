@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class GenerateFloor : MonoBehaviour
+public class FloorGenerator : MonoBehaviour
 {
     public GameObject floorPrefab1; // 生成する床のプレハブ1
     public GameObject floorPrefab2; // 生成する床のプレハブ2
