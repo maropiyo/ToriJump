@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
         isFalling = rb.velocity.y < 0;
 
         MovePlayer();
+
+        UpdatePlayerScale();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -60,5 +62,26 @@ public class PlayerController : MonoBehaviour
 
         // Rigidbody2Dコンポーネントを取得して、プレイヤーに力を加える
         rb.AddForce(new Vector2(moveForce * moveSpeed, 0f));
+    }
+
+    void UpdatePlayerScale()
+    {
+        // スケールを取得
+        Vector3 scale = transform.localScale;
+
+        // 右方向に移動中
+        if (rb.velocity.x > 0)
+        {
+            scale.x = 0.15f; // そのまま（右向き）
+
+        }
+
+        // 左方向に移動中
+        if (rb.velocity.x < 0)
+        {
+            scale.x = -0.15f; // 反転する（左向き）
+        }
+        // 代入する
+        transform.localScale = scale;
     }
 }
