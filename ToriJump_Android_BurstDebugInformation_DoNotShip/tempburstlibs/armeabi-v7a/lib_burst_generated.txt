@@ -1,4 +1,4 @@
-Library: C:\dev\UnityProjects\ToriJump\Temp\BurstOutput\tempburstlibs\armeabi-v7a\lib_burst_generated
+Library: /Users/manato/dev/UnityProjects/ToriJump/Temp/BurstOutput/tempburstlibs/armeabi-v7a/lib_burst_generated
 --platform=Android
 --backend=burst-llvm-14
 --target=ARMV7A_NEON32
@@ -6,9 +6,9 @@ Library: C:\dev\UnityProjects\ToriJump\Temp\BurstOutput\tempburstlibs\armeabi-v7
 --meta-data-generation=False
 --dump=Function
 --float-precision=Standard
---generate-link-xml=Temp\burst.link.xml
---temp-folder=C:\dev\UnityProjects\ToriJump\Temp\Burst
---output=C:\dev\UnityProjects\ToriJump\Temp\BurstOutput\tempburstlibs\armeabi-v7a\lib_burst_generated
+--generate-link-xml=Temp/burst.link.xml
+--temp-folder=/Users/manato/dev/UnityProjects/ToriJump/Temp/Burst
+--output=/Users/manato/dev/UnityProjects/ToriJump/Temp/BurstOutput/tempburstlibs/armeabi-v7a/lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 --pdb-search-paths=Temp/ManagedSymbols/
 
