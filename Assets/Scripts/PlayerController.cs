@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // 通常時のSprite
+    [SerializeField] private Sprite normalSprite;
+    // ジャンプ時のSprite
+    [SerializeField] private Sprite jumpSprite;
+
     // プレイヤーの移動速度
     public float moveSpeed = 5.0f;
     // ジャンプ力
@@ -9,6 +14,8 @@ public class PlayerController : MonoBehaviour
 
     // プレイヤーのRigidbody2D
     private Rigidbody2D rb;
+    // プレイヤーのSpriteRenderer
+    private SpriteRenderer sr;
 
     // 落下中か
     private bool isFalling = false;
@@ -16,6 +23,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         this.rb = GetComponent<Rigidbody2D>();
+        this.sr = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -26,6 +34,8 @@ public class PlayerController : MonoBehaviour
         MovePlayer();
 
         UpdatePlayerScale();
+
+        UpdatePlayerImage();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -72,16 +82,28 @@ public class PlayerController : MonoBehaviour
         // 右方向に移動中
         if (rb.velocity.x > 0)
         {
-            scale.x = 0.2f; // そのまま（右向き）
+            scale.x = 0.15f; // そのまま（右向き）
 
         }
 
         // 左方向に移動中
         if (rb.velocity.x < 0)
         {
-            scale.x = -0.2f; // 反転する（左向き）
+            scale.x = -0.15f; // 反転する（左向き）
         }
         // 代入する
         transform.localScale = scale;
+    }
+
+    void UpdatePlayerImage()
+    {
+        if (!isFalling)
+        {
+            sr.sprite = jumpSprite;
+        }
+        else
+        {
+            sr.sprite = normalSprite;
+        }
     }
 }
