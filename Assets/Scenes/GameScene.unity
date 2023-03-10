@@ -932,6 +932,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 347a5bb875f0a41a3b28abde4995f5f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalSprite: {fileID: 21300000, guid: cfb04ae14af344e62be68183177a3e2d, type: 3}
+  jumpSprite: {fileID: 21300000, guid: 7c89e8f4d348c407ca1027771e206141, type: 3}
   moveSpeed: 7
   jumpForce: 450
 --- !u!61 &1048046967
