@@ -27,4 +27,10 @@ public class ResultDirector : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene");
     }
+
+    // タイトルへボタンが押された時
+    public void OnToTitleButtonClicked()
+    {
+        SceneManager.LoadScene("TitleScene");
+    }
 }
