@@ -72,14 +72,14 @@ public class PlayerController : MonoBehaviour
         // 右方向に移動中
         if (rb.velocity.x > 0)
         {
-            scale.x = 0.2f; // そのまま（右向き）
+            scale.x = 0.15f; // そのまま（右向き）
 
         }
 
         // 左方向に移動中
         if (rb.velocity.x < 0)
         {
-            scale.x = -0.2f; // 反転する（左向き）
+            scale.x = -0.15f; // 反転する（左向き）
         }
         // 代入する
         transform.localScale = scale;
