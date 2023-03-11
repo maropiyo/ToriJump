@@ -7,6 +7,11 @@ public class PlayerController : MonoBehaviour
     // ジャンプ時のSprite
     [SerializeField] private Sprite jumpSprite;
 
+    // ジャンプ時の効果音
+    public AudioClip se1;
+    // スーパージャンプ時の効果音
+    public AudioClip se2;
+
     // プレイヤーの移動速度
     public float moveSpeed = 5.0f;
     // ジャンプ力
@@ -17,6 +22,9 @@ public class PlayerController : MonoBehaviour
     // プレイヤーのSpriteRenderer
     private SpriteRenderer sr;
 
+    // プレイヤーのAudioSource
+    private AudioSource audioSource;
+
     // 落下中か
     private bool isFalling = false;
 
@@ -24,6 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         this.rb = GetComponent<Rigidbody2D>();
         this.sr = GetComponent<SpriteRenderer>();
+        this.audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -49,6 +58,9 @@ public class PlayerController : MonoBehaviour
             // 上方向に力を加える
             rb.velocity = Vector3.zero;
             rb.AddForce(transform.up * this.jumpForce);
+
+            // ジャンプ時の効果音を鳴らす
+            audioSource.PlayOneShot(se1);
         }
 
         // 接触したオブジェクトのタグが"SuperJumpFloor"の場合
@@ -57,6 +69,9 @@ public class PlayerController : MonoBehaviour
             // 上方向に力を加える
             rb.velocity = Vector3.zero;
             rb.AddForce(transform.up * this.jumpForce * 1.45f);
+
+            // ジャンプ時の効果音を鳴らす
+            audioSource.PlayOneShot(se2);
         }
     }
 
