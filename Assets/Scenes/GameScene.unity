@@ -167,8 +167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a921b66b86f445f8f521cbbc7fee4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floorPrefab1: {fileID: 1247402064}
-  floorPrefab2: {fileID: 7506451992129198861, guid: daf61aa52262b46bd9fbb13db4432dac, type: 3}
+  objects:
+  - {fileID: 8136708646687763335, guid: 38395d955a5f4449bb29167d2eedb813, type: 3}
+  - {fileID: 7506451992129198861, guid: daf61aa52262b46bd9fbb13db4432dac, type: 3}
+  - {fileID: 3331359915313708253, guid: 8118a2531e97d48289125839b678cd6f, type: 3}
   floorGap: 1.5
   minX: -2
   maxX: 2
@@ -1196,11 +1198,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &1247402064 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8136708646687763335, guid: 38395d955a5f4449bb29167d2eedb813, type: 3}
-  m_PrefabInstance: {fileID: 430632337}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1300538497
 GameObject:
   m_ObjectHideFlags: 0

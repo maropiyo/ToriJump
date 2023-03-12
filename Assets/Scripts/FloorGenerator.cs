@@ -3,8 +3,7 @@ using System.Collections.Generic;
 
 public class FloorGenerator : MonoBehaviour
 {
-    public GameObject floorPrefab1; // 生成する床のプレハブ1
-    public GameObject floorPrefab2; // 生成する床のプレハブ2
+    public GameObject[] objects; //　生成する床のプレファブ配列
     public float floorGap = 3.0f; // 床のY軸方向の間隔
     public float minX = 0.0f; // 床の最小X座標
     public float maxX = 5.0f; // 床の最大X座標
@@ -39,8 +38,9 @@ public class FloorGenerator : MonoBehaviour
     private void GenerateNextFloor()
     {
         float randomX = Random.Range(minX, maxX);
-        GameObject floorPrefab = Random.value > 0.4f ? floorPrefab1 : floorPrefab2;
-        GameObject newFloor = Instantiate(floorPrefab, new Vector3(randomX, lastFloorY + floorGap, 0), Quaternion.identity);
+        int randomIndex = Random.Range(0, objects.Length);
+        GameObject selectedFloor = objects[randomIndex];
+        GameObject newFloor = Instantiate(selectedFloor, new Vector3(randomX, lastFloorY + floorGap, 0), Quaternion.identity);
         floors.Add(newFloor);
         lastFloorY = newFloor.transform.position.y;
     }
