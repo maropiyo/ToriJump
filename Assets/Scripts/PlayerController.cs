@@ -52,8 +52,8 @@ public class PlayerController : MonoBehaviour
         // 落下中でなければ何もしない
         if (!isFalling) return;
 
-        // 接触したオブジェクトのタグが"JumpFloor"の場合
-        if (collision.gameObject.CompareTag("JumpFloor"))
+        // 接触したオブジェクトのタグが"Floor"の場合
+        if (collision.gameObject.CompareTag("Floor"))
         {
             // 上方向に力を加える
             rb.velocity = Vector3.zero;
@@ -63,8 +63,8 @@ public class PlayerController : MonoBehaviour
             audioSource.PlayOneShot(se1);
         }
 
-        // 接触したオブジェクトのタグが"SuperJumpFloor"の場合
-        if (collision.gameObject.CompareTag("SuperJumpFloor"))
+        // 接触したオブジェクトのタグが"JumpFloor"の場合
+        if (collision.gameObject.CompareTag("JumpFloor"))
         {
             // 上方向に力を加える
             rb.velocity = Vector3.zero;

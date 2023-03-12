@@ -5,7 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - JumpFloor
-  - SuperJumpFloor
+  - JumpFloor
+  - JumpFloor
+  - Floor
   layers:
   - Default
   - TransparentFX
