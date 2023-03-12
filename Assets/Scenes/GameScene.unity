@@ -252,7 +252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8136708646687763335, guid: 38395d955a5f4449bb29167d2eedb813, type: 3}
       propertyPath: m_Name
-      value: JumpFloorPrefab
+      value: FloorPrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
