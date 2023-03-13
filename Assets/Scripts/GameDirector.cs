@@ -7,10 +7,10 @@ public class GameDirector : MonoBehaviour
     // スコア
     public static int score;
 
+    // メインカメラ
+    public Camera mainCamera;
     // プレイヤーのTransform
     public Transform player;
-    // メインカメラ
-    public Transform mainCamera;
     // スコアのテキスト
     public TextMeshProUGUI scoreText;
     // ハイスコアのテキスト
@@ -20,19 +20,25 @@ public class GameDirector : MonoBehaviour
     private float playerStartPositionY;
     // ハイスコア
     private int highScore;
+    // プレイヤーの大きさ
+    private Vector2 playerSize;
 
     void Start()
     {
         // フレームレートを60に設定
         Application.targetFrameRate = 60;
+        
+        //　プレイヤーのサイズを取得
+        playerSize = GetComponent<SpriteRenderer>().bounds.size;
+
+        // プレイヤーの開始高さを取得
+        playerStartPositionY = player.position.y;
+
         // スコアをリセット
         score = 0;
         // ハイスコアを取得
         highScore = PlayerPrefs.GetInt("HighScore", 0);
         highScoreText.text = $"High: {highScore}";
-
-        // プレイヤーの開始高さを取得
-        playerStartPositionY = player.position.y;
     }
 
     void Update()
@@ -44,8 +50,28 @@ public class GameDirector : MonoBehaviour
 
     private void CheckPlayerPosition()
     {
+        // ワールド座標をビューポート座標に変換する
+        Vector3 viewportPosition = mainCamera.WorldToViewportPoint(player.position);
+
+        // ビューポート座標が画面外にある場合
+        if (viewportPosition.x < 0f || 1f < viewportPosition.x)
+        {
+            // 反対側にワープする
+            Vector3 newPosition = player.position;
+
+            if (viewportPosition.x < 0f)
+            {
+                newPosition.x = mainCamera.ViewportToWorldPoint(new Vector3(1f, 0f, 0f)).x;
+            }
+            else if (viewportPosition.x > 1f)
+            {
+                newPosition.x = mainCamera.ViewportToWorldPoint(new Vector3(0f, 0f, 0f)).x;
+            }
+            player.position = newPosition;
+        }
+
         // プレイヤーがメインカメラの範囲外（下）に行った場合
-        if (player.position.y < mainCamera.position.y - 5.5)
+        if (player.position.y < mainCamera.GetComponent<Transform>().position.y - 5.5)
         {
             // ハイスコアを更新する
             UpdateHighScore();
