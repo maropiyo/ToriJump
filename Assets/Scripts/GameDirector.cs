@@ -35,15 +35,14 @@ public class GameDirector : MonoBehaviour
         playerStartPositionY = player.position.y;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        WrapObject();
+        CheckPlayerPosition();
 
         UpdateScore();
     }
 
-    private void WrapObject()
+    private void CheckPlayerPosition()
     {
         // プレイヤーがメインカメラの範囲外（下）に行った場合
         if (player.position.y < mainCamera.position.y - 5.5)
