@@ -25,9 +25,6 @@ public class GameDirector : MonoBehaviour
     {
         // フレームレートを60に設定
         Application.targetFrameRate = 60;
-        
-        //　プレイヤーのサイズを取得
-        playerSize = GetComponent<SpriteRenderer>().bounds.size;
 
         // スコアをリセット
         score = 0;
