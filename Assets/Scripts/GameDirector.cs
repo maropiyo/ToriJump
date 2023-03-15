@@ -31,14 +31,14 @@ public class GameDirector : MonoBehaviour
         //　プレイヤーのサイズを取得
         playerSize = GetComponent<SpriteRenderer>().bounds.size;
 
-        // プレイヤーの開始高さを取得
-        playerStartPositionY = player.position.y;
-
         // スコアをリセット
         score = 0;
         // ハイスコアを取得
         highScore = PlayerPrefs.GetInt("HighScore", 0);
         highScoreText.text = $"High: {highScore}";
+
+        // プレイヤーの開始高さを取得
+        playerStartPositionY = player.position.y;
     }
 
     void Update()
