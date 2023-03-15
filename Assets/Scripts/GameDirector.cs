@@ -20,8 +20,6 @@ public class GameDirector : MonoBehaviour
     private float playerStartPositionY;
     // ハイスコア
     private int highScore;
-    // プレイヤーの大きさ
-    private Vector2 playerSize;
 
     void Start()
     {
