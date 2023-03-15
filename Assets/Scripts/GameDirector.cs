@@ -16,29 +16,29 @@ public class GameDirector : MonoBehaviour
     // ハイスコアのテキスト
     public TextMeshProUGUI highScoreText;
 
-    // 開始位置
+    // メインカメラのTransform
+    private Transform mainCameraTransform;
+    // 開始高さ
     private float playerStartPositionY;
     // ハイスコア
     private int highScore;
-    // プレイヤーの大きさ
-    private Vector2 playerSize;
 
     void Start()
     {
         // フレームレートを60に設定
         Application.targetFrameRate = 60;
-        
-        //　プレイヤーのサイズを取得
-        playerSize = GetComponent<SpriteRenderer>().bounds.size;
-
-        // プレイヤーの開始高さを取得
-        playerStartPositionY = player.position.y;
 
         // スコアをリセット
         score = 0;
         // ハイスコアを取得
         highScore = PlayerPrefs.GetInt("HighScore", 0);
         highScoreText.text = $"High: {highScore}";
+
+        // メインカメラのTransformを取得
+        mainCameraTransform = mainCamera.GetComponent<Transform>();
+
+        // プレイヤーの開始高さを取得
+        playerStartPositionY = player.position.y;
     }
 
     void Update()
@@ -50,20 +50,20 @@ public class GameDirector : MonoBehaviour
 
     private void CheckPlayerPosition()
     {
-        // ワールド座標をビューポート座標に変換する
-        Vector3 viewportPosition = mainCamera.WorldToViewportPoint(player.position);
+        // プレイヤーのワールド座標をビューポート座標に変換する
+        Vector3 playerViewportPosition = mainCamera.WorldToViewportPoint(player.position);
 
-        // ビューポート座標が画面外にある場合
-        if (viewportPosition.x < 0f || 1f < viewportPosition.x)
+        // プレイヤーがメインカメラの範囲外（左右）に行った場合
+        if (playerViewportPosition.x < 0f || 1f < playerViewportPosition.x)
         {
             // 反対側にワープする
             Vector3 newPosition = player.position;
 
-            if (viewportPosition.x < 0f)
+            if (playerViewportPosition.x < 0f)
             {
                 newPosition.x = mainCamera.ViewportToWorldPoint(new Vector3(1f, 0f, 0f)).x;
             }
-            else if (viewportPosition.x > 1f)
+            else if (playerViewportPosition.x > 1f)
             {
                 newPosition.x = mainCamera.ViewportToWorldPoint(new Vector3(0f, 0f, 0f)).x;
             }
@@ -71,7 +71,7 @@ public class GameDirector : MonoBehaviour
         }
 
         // プレイヤーがメインカメラの範囲外（下）に行った場合
-        if (player.position.y < mainCamera.GetComponent<Transform>().position.y - 5.5)
+        if (player.position.y < mainCameraTransform.position.y - 5.5)
         {
             // ハイスコアを更新する
             UpdateHighScore();
