@@ -16,7 +16,9 @@ public class GameDirector : MonoBehaviour
     // ハイスコアのテキスト
     public TextMeshProUGUI highScoreText;
 
-    // 開始位置
+    // メインカメラのTransform
+    private Transform mainCameraTransform;
+    // 開始高さ
     private float playerStartPositionY;
     // ハイスコア
     private int highScore;
@@ -31,6 +33,9 @@ public class GameDirector : MonoBehaviour
         // ハイスコアを取得
         highScore = PlayerPrefs.GetInt("HighScore", 0);
         highScoreText.text = $"High: {highScore}";
+
+        // メインカメラのTransformを取得
+        mainCameraTransform = mainCamera.GetComponent<Transform>();
 
         // プレイヤーの開始高さを取得
         playerStartPositionY = player.position.y;
@@ -66,7 +71,7 @@ public class GameDirector : MonoBehaviour
         }
 
         // プレイヤーがメインカメラの範囲外（下）に行った場合
-        if (player.position.y < mainCamera.GetComponent<Transform>().position.y - 5.5)
+        if (player.position.y < mainCameraTransform.position.y - 5.5)
         {
             // ハイスコアを更新する
             UpdateHighScore();
