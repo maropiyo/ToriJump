@@ -6,7 +6,7 @@ using UnityEngine;
 public class DaytimeController : MonoBehaviour
 {
     // 空の色
-    public Gradient skyColors;
+    [SerializeField] private Gradient skyColors;
     // 1日の長さ（秒）
     public float dayDuration = 120f;
     // 現在の時間
@@ -16,6 +16,7 @@ public class DaytimeController : MonoBehaviour
 
     void Start()
     {
+        // メインカメラを取得する。
         mainCamera = Camera.main;
     }
 
@@ -23,7 +24,7 @@ public class DaytimeController : MonoBehaviour
     {
         UpdateTimeOfDay();
 
-        // 背景色を現在時間に合わせたものに変更。
+        // 背景色を現在の時間に合わせて変更する。
         mainCamera.backgroundColor = skyColors.Evaluate(timeOfDay);
     }
 
