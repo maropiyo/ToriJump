@@ -411,7 +411,7 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 8
     m_NumAlphaKeys: 2
-  dayDuration: 60
+  dayDuration: 120
 --- !u!1 &807805876
 GameObject:
   m_ObjectHideFlags: 0
