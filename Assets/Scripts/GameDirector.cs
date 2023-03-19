@@ -32,7 +32,7 @@ public class GameDirector : MonoBehaviour
         score = 0;
         // ハイスコアを取得
         highScore = PlayerPrefs.GetInt("HighScore", 0);
-        highScoreText.text = $"High: {highScore}";
+        highScoreText.text = $"High: {highScore}m";
 
         // メインカメラのTransformを取得
         mainCameraTransform = mainCamera.GetComponent<Transform>();
@@ -94,7 +94,7 @@ public class GameDirector : MonoBehaviour
         {
             // スコアを更新する
             score = currentScore;
-            scoreText.text = $"Score: {currentScore}";
+            scoreText.text = $"Score: {currentScore} m";
         }
     }
 

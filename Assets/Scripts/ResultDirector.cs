@@ -15,11 +15,11 @@ public class ResultDirector : MonoBehaviour
     private void Start()
     {
         // スコアを表示
-        resultScoreText.text = $"Score\n{GameDirector.score}";
+        resultScoreText.text = $"Score\n{GameDirector.score}m";
 
         // ハイスコアを取得して表示
         highScore = PlayerPrefs.GetInt("HighScore", 0);
-        resultHighScoreText.text = $"High: {highScore}";
+        resultHighScoreText.text = $"High: {highScore}m";
     }
 
     // リスタートボタンが押された時
