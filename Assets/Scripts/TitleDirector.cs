@@ -8,9 +8,15 @@ public class TitleDirector : MonoBehaviour
 
     }
 
-    // スタートボタンが押された時
+    // 「はじめる」ボタンが押された時
     public void OnStartButtonClicked()
     {
         SceneManager.LoadScene("GameScene");
+    }
+
+    // 「とりをえらぶ」ボタンが押された時
+    public void OnSelectBirdButtonClicked()
+    {
+        SceneManager.LoadScene("CharacterSelectScene");
     }
 }
