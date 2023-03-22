@@ -1666,7 +1666,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2115579339}
-  - component: {fileID: 2115579340}
   - component: {fileID: 2115579341}
   m_Layer: 0
   m_Name: CharacterSelectDirector
@@ -1690,18 +1689,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2115579340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2115579338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1c260a2905c047cebe2df217605b7c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2115579341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1723,22 +1710,6 @@ MonoBehaviour:
   - {fileID: 1506940940}
   backButton: {fileID: 1526290788}
   confirmButton: {fileID: 2142022919}
-  characterDataList:
-  - Id: sekisei_yellow
-    Name: "\u304D\u3044\u308D\u3044\u3044\u3093\u3053"
-    Image: {fileID: 21300000, guid: cfb04ae14af344e62be68183177a3e2d, type: 3}
-    JumpImage: {fileID: 21300000, guid: 7c89e8f4d348c407ca1027771e206141, type: 3}
-    Description: "\u304D\u3044\u308D\u304F\u3066\u304B\u308F\u3044\u3044\uFF01"
-  - Id: sekisei_blue
-    Name: "\u3042\u304A\u3044\u308D\u3044\u3093\u3053"
-    Image: {fileID: 21300000, guid: 4c7aea9c066d347f08aced20dbc83ecb, type: 3}
-    JumpImage: {fileID: 21300000, guid: d1775bd0f4d64472fae5a319b2348db2, type: 3}
-    Description: "\u3042\u304A\u304F\u3066\u304B\u3063\u3053\u3044\u3044\uFF01"
-  - Id: okame
-    Name: "\u304A\u304B\u3081\u306A\u3044\u3093\u3053"
-    Image: {fileID: 21300000, guid: fec9b9d3191cf4cb8bb0592404ffc575, type: 3}
-    JumpImage: {fileID: 21300000, guid: 0f8a85b1961654b38aa7947a04ee3a75, type: 3}
-    Description: "\u304B\u3093\u3080\u308A\u304C\u304B\u308F\u3044\u3044\uFF01"
 --- !u!1 &2142022917
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,12 +1,8 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // 通常時のSprite
-    [SerializeField] private Sprite normalSprite;
-    // ジャンプ時のSprite
-    [SerializeField] private Sprite jumpSprite;
-
     // ジャンプ時の効果音
     public AudioClip se1;
     // スーパージャンプ時の効果音
@@ -17,6 +13,11 @@ public class PlayerController : MonoBehaviour
     // ジャンプ力
     public float jumpForce = 800f;
 
+    // 通常時の画像
+    private Sprite characterImage;
+    // ジャンプ時の画像
+    private Sprite characterJumpImage;
+
     // プレイヤーのRigidbody2D
     private Rigidbody2D rb;
     // プレイヤーのSpriteRenderer
@@ -25,11 +26,26 @@ public class PlayerController : MonoBehaviour
     // プレイヤーのAudioSource
     private AudioSource audioSource;
 
+    // キャラクター情報のリスト
+    private List<CharacterData> characterDataList;
+
+
     // 落下中か
     private bool isFalling = false;
 
     void Start()
     {
+        // ScriptableObjectをロード
+        characterDataList = Resources.Load<CharacterList>("CharacterList").characters;
+
+        // 選択されたキャラクター情報を探す
+        string selectedCharacterId = PlayerPrefs.GetString("SelectedCharacter", "normal_inko");
+        CharacterData selectedCharacter = characterDataList.Find(c => c.Id == selectedCharacterId);
+
+        // 選択されたキャラクターの画像をセットする
+        characterImage = selectedCharacter.Image;
+        characterJumpImage = selectedCharacter.JumpImage;
+
         this.rb = GetComponent<Rigidbody2D>();
         this.sr = GetComponent<SpriteRenderer>();
         this.audioSource = GetComponent<AudioSource>();
@@ -114,11 +130,11 @@ public class PlayerController : MonoBehaviour
     {
         if (!isFalling)
         {
-            sr.sprite = jumpSprite;
+            sr.sprite =  characterJumpImage;
         }
         else
         {
-            sr.sprite = normalSprite;
+            sr.sprite = characterImage;
         }
     }
 }

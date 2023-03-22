@@ -14,14 +14,23 @@ public class CharacterSelect : MonoBehaviour
     [SerializeField] private Button backButton;
     [SerializeField] private Button confirmButton;
 
+    private CharacterList characterList;
+
     // 選択されたキャラクターのインデックス
     private int selectedIndex = 0;
 
     // キャラクター情報のリスト
-    [SerializeField] private List<CharacterData> characterDataList;
+    private List<CharacterData> characterDataList;
 
     private void Start()
     {
+        // ScriptableObjectをロード
+        characterDataList = Resources.Load<CharacterList>("CharacterList").characters;
+
+        // 選択されたキャラクター情報を探す
+        string selectedCharacterId = PlayerPrefs.GetString("SelectedCharacter", "normal_inko");
+        CharacterData selectedCharacter = characterDataList.Find(c => c.Id == selectedCharacterId);
+
         // キャラクター選択ボタンにリスナーを追加
         for (int i = 0; i < characterButtons.Length; i++)
         {
@@ -33,8 +42,10 @@ public class CharacterSelect : MonoBehaviour
         backButton.onClick.AddListener(BackToTitle);
         confirmButton.onClick.AddListener(ConfirmSelection);
 
+        // 選択されたプレイヤーのIDに対応するキャラクターが、charactersリスト内の何番目にあるかを取得
+        int selectedPlayerIndex = characterDataList.FindIndex(c => c.Id == selectedCharacter.Id);
         // 初期キャラクター選択
-        SelectCharacter(0);
+        SelectCharacter(selectedPlayerIndex);
     }
 
     // キャラクター選択処理
