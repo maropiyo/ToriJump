@@ -1101,7 +1101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 706700587073530289, guid: 2043095f4f5b046a6a37500e2555f53f, type: 3}
       propertyPath: moveSpeed
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7036845402706872646, guid: 2043095f4f5b046a6a37500e2555f53f, type: 3}
       propertyPath: m_RootOrder
