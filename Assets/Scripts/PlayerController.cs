@@ -3,11 +3,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // ジャンプ時の効果音
-    public AudioClip se1;
-    // スーパージャンプ時の効果音
-    public AudioClip se2;
-
     // プレイヤーの移動速度
     public float moveSpeed = 5.0f;
     // ジャンプ力
