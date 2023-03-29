@@ -73,6 +73,9 @@ public class GameDirector : MonoBehaviour
         // プレイヤーがメインカメラの範囲外（下）に行った場合
         if (player.position.y < mainCameraTransform.position.y - 5.5)
         {
+            // 落下時の効果音を鳴らす
+            SoundManager.Instance.PlayFallSound();
+
             // ハイスコアを更新する
             UpdateHighScore();
 

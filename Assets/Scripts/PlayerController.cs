@@ -23,9 +23,6 @@ public class PlayerController : MonoBehaviour
     // プレイヤーのSpriteRenderer
     private SpriteRenderer sr;
 
-    // プレイヤーのAudioSource
-    private AudioSource audioSource;
-
     // キャラクター情報のリスト
     private List<CharacterData> characterDataList;
 
@@ -48,7 +45,6 @@ public class PlayerController : MonoBehaviour
 
         this.rb = GetComponent<Rigidbody2D>();
         this.sr = GetComponent<SpriteRenderer>();
-        this.audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -76,7 +72,7 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(transform.up * this.jumpForce);
 
             // ジャンプ時の効果音を鳴らす
-            audioSource.PlayOneShot(se1);
+            SoundManager.Instance.PlayJumpSound();
         }
 
         // 接触したオブジェクトのタグが"JumpFloor"の場合
@@ -87,7 +83,7 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(transform.up * this.jumpForce * 1.45f);
 
             // ジャンプ時の効果音を鳴らす
-            audioSource.PlayOneShot(se2);
+            SoundManager.Instance.PlaySuperJumpSound();
         }
     }
 
