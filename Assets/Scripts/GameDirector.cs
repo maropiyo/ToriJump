@@ -97,7 +97,7 @@ public class GameDirector : MonoBehaviour
         {
             // スコアを更新する
             score = currentScore;
-            scoreText.text = $"Score: {currentScore} m";
+            scoreText.text = $"Score: {currentScore}m";
         }
     }
 
