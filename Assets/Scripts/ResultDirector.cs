@@ -1,13 +1,13 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ResultDirector : MonoBehaviour
 {
     // リザルトスコアのテキスト
-    public TextMeshProUGUI resultScoreText;
+    public Text resultScoreText;
     // ハイスコアのテキスト
-    public TextMeshProUGUI resultHighScoreText;
+    public Text resultHighScoreText;
 
     // ハイスコア
     private int highScore;
