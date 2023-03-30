@@ -1,6 +1,6 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameDirector : MonoBehaviour
 {
@@ -12,9 +12,9 @@ public class GameDirector : MonoBehaviour
     // プレイヤーのTransform
     public Transform player;
     // スコアのテキスト
-    public TextMeshProUGUI scoreText;
+    public Text scoreText;
     // ハイスコアのテキスト
-    public TextMeshProUGUI highScoreText;
+    public Text highScoreText;
 
     // メインカメラのTransform
     private Transform mainCameraTransform;
