@@ -22,6 +22,12 @@ public class ResultDirector : MonoBehaviour
         resultHighScoreText.text = $"High: {highScore}m";
     }
 
+    // ランキングボタンが押された時
+    public void OnRankingButtonClicked()
+    {
+        naichilab.RankingLoader.Instance.SendScoreAndShowRanking(GameDirector.score);
+    }
+
     // リスタートボタンが押された時
     public void OnRestartButtonClicked()
     {

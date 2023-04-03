@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a70574be0ea4044ac8d85c166124b3b1, type: 3}
   m_Name: RankingInfo
   m_EditorClassIdentifier: 
-  BoardName: "\u3089\u3093\u304D\u3093\u3050"
+  BoardName: "\u30CF\u30A4\u30B9\u30B3\u30A2"
   ClassName: HiScore
   Type: 0
   Order: 1
