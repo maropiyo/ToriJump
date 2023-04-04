@@ -59,7 +59,7 @@ namespace naichilab
             {
                 if (string.IsNullOrEmpty(nameInputField.text))
                 {
-                    return "No Name";
+                    return "名無し";
                 }
 
                 return nameInputField.text;
