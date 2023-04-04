@@ -59,7 +59,7 @@ namespace naichilab
             {
                 if (string.IsNullOrEmpty(nameInputField.text))
                 {
-                    return "名無し";
+                    return "No Name";
                 }
 
                 return nameInputField.text;
@@ -79,7 +79,7 @@ namespace naichilab
 
         IEnumerator GetHighScoreAndRankingBoard()
         {
-            scoreLabel.text = _lastScore.TextForDisplay;
+            scoreLabel.text = _lastScore.TextForDisplay + "m";
             captionLabel.text = string.Format("{0}ランキング", _board.BoardName);
 
             //ハイスコア取得
@@ -96,7 +96,7 @@ namespace naichilab
                     _ncmbRecord = hiScoreCheck.Result.First();
 
                     var s = _board.BuildScore(_ncmbRecord[COLUMN_SCORE].ToString());
-                    highScoreLabel.text = s != null ? s.TextForDisplay : "エラー";
+                    highScoreLabel.text = s != null ? s.TextForDisplay + "m" : "エラー";
 
                     nameInputField.text = _ncmbRecord[COLUMN_NAME].ToString();
                 }
@@ -169,7 +169,7 @@ namespace naichilab
             //ObjectIDを保存して次に備える
             ObjectID = _ncmbRecord.ObjectId;
 
-            highScoreLabel.text = _lastScore.TextForDisplay;
+            highScoreLabel.text = _lastScore.TextForDisplay + "m";
 
             yield return StartCoroutine(LoadRankingBoard());
         }
@@ -223,7 +223,7 @@ namespace naichilab
                     rankNode.NameText.text = r[COLUMN_NAME].ToString();
 
                     var s = _board.BuildScore(r[COLUMN_SCORE].ToString());
-                    rankNode.ScoreText.text = s != null ? s.TextForDisplay : "エラー";
+                    rankNode.ScoreText.text = s != null ? s.TextForDisplay + "m" : "エラー";
 
 //                    Debug.Log(r[COLUMN_SCORE].ToString());
                 }
