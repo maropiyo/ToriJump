@@ -171,6 +171,7 @@ MonoBehaviour:
   - {fileID: 8136708646687763335, guid: 38395d955a5f4449bb29167d2eedb813, type: 3}
   - {fileID: 7506451992129198861, guid: daf61aa52262b46bd9fbb13db4432dac, type: 3}
   - {fileID: 3331359915313708253, guid: 8118a2531e97d48289125839b678cd6f, type: 3}
+  - {fileID: 5874943327686850521, guid: 05a342003c4114b8a9a31e8941c75175, type: 3}
   floorGap: 1.5
   minX: -2
   maxX: 2

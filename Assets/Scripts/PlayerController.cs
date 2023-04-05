@@ -80,6 +80,17 @@ public class PlayerController : MonoBehaviour
             // ジャンプ時の効果音を鳴らす
             SoundManager.Instance.PlaySuperJumpSound();
         }
+
+        // 接触したオブジェクトのタグが"SuperJumpFloor"の場合
+        if (collision.gameObject.CompareTag("SuperJumpFloor"))
+        {
+            // 上方向に力を加える
+            rb.velocity = Vector3.zero;
+            rb.AddForce(transform.up * this.jumpForce * 5.0f);
+
+            // ジャンプ時の効果音を鳴らす
+            SoundManager.Instance.PlaySuperJumpSound();
+        }
     }
 
     void MovePlayer()

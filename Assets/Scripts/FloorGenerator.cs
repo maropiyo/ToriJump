@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class FloorGenerator : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class FloorGenerator : MonoBehaviour
     private float playerHeight; // プレイヤーの高さ
     private float lastFloorY; // 最後に生成した床のY座標
     private List<GameObject> floors = new List<GameObject>(); // 生成した床のリスト
+    private float[] probabilities = { 0.4f, 0.3f, 0.29f, 0.01f };
 
     private void Start()
     {
@@ -37,9 +39,8 @@ public class FloorGenerator : MonoBehaviour
     // 次の床を生成する
     private void GenerateNextFloor()
     {
-        float randomX = Random.Range(minX, maxX);
-        int randomIndex = Random.Range(0, objects.Length);
-        GameObject selectedFloor = objects[randomIndex];
+        float randomX = UnityEngine.Random.Range(minX, maxX);
+        GameObject selectedFloor = GetRundomObject(objects, probabilities);
         GameObject newFloor = Instantiate(selectedFloor, new Vector3(randomX, lastFloorY + floorGap, 0), Quaternion.identity);
         floors.Add(newFloor);
         lastFloorY = newFloor.transform.position.y;
@@ -57,6 +58,23 @@ public class FloorGenerator : MonoBehaviour
                 i--;
             }
         }
+    }
+
+    private GameObject GetRundomObject(GameObject[] objects, float[] probabilities)
+    {
+        float randomValue = UnityEngine.Random.value;
+        float cumulativeProbability = 0;
+
+        for (int i = 0; i < probabilities.Length; i++)
+        {
+            cumulativeProbability += probabilities[i];
+            if (randomValue <= cumulativeProbability)
+            {
+                return objects[i];
+            }
+        }
+
+        throw new InvalidOperationException("Probabilities should sum up to 1.");
     }
 }
 

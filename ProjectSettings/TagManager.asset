@@ -8,6 +8,7 @@ TagManager:
   - JumpFloor
   - JumpFloor
   - Floor
+  - SuperJumpFloor
   layers:
   - Default
   - TransparentFX
