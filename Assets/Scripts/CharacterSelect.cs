@@ -82,6 +82,7 @@ public class CharacterSelect : MonoBehaviour
         PlayerPrefs.SetString("SelectedCharacter", characterDataList[selectedIndex].Id);
         PlayerPrefs.Save();
 
+
         // タイトル画面に戻る
         SceneManager.LoadScene("TitleScene");
     }
