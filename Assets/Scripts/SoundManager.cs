@@ -8,8 +8,8 @@ public class SoundManager : MonoBehaviour
 
     // AudioSource
     public AudioSource audioSource;
-    // BGM
-    public AudioSource bgm;
+    // GameBGM
+    public AudioSource gameBgm;
     // ジャンプ時の効果音
     public AudioClip jumpSound;
     // ハイジャンプ時の効果音
@@ -22,13 +22,27 @@ public class SoundManager : MonoBehaviour
     void Awake()
     {
         // シングルトンパターンの実装
-        Instance = Instance ? Instance : this;
-        DontDestroyOnLoad(Instance.gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
 
     public void DestroyGameObject()
     {
         Destroy(gameObject);
+    }
+
+    // BGMを止める
+    public void StopBgm()
+    {
+        audioSource.Stop();
     }
 
     // ジャンプ時の効果音を再生する
@@ -58,8 +72,8 @@ public class SoundManager : MonoBehaviour
 
     IEnumerator PauseAudioForSeconds(float seconds)
     {
-        bgm.Pause();
+        gameBgm.Pause();
         yield return new WaitForSeconds(seconds);
-        bgm.UnPause();
+        gameBgm.UnPause();
     }
 }
