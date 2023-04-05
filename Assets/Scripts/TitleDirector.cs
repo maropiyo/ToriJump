@@ -22,6 +22,7 @@ public class TitleDirector : MonoBehaviour
     // 「はじめる」ボタンが押された時
     public void OnStartButtonClicked()
     {
+        SoundManager.Instance.DestroyGameObject();
         SceneManager.LoadScene("GameScene");
     }
 
