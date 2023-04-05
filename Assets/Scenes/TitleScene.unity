@@ -403,6 +403,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2883123302100554218, guid: 2c366770d13b24910bc4c06e559c98d6, type: 3}
+      propertyPath: bgm
+      value: 
+      objectReference: {fileID: 1719383077}
+    - target: {fileID: 2883123302100554218, guid: 2c366770d13b24910bc4c06e559c98d6, type: 3}
+      propertyPath: fallSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a19d94da14a22445cafb45fa90f685e5, type: 3}
+    - target: {fileID: 2883123302100554218, guid: 2c366770d13b24910bc4c06e559c98d6, type: 3}
+      propertyPath: highJumpSound
+      value: 
+      objectReference: {fileID: 8300000, guid: aaf8eb900e7e34f6497cc030e8638480, type: 3}
+    - target: {fileID: 2883123302100554218, guid: 2c366770d13b24910bc4c06e559c98d6, type: 3}
+      propertyPath: superJumpSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 24742a7e078fe42b2b772a1e95eab351, type: 3}
     - target: {fileID: 5302517957548616016, guid: 2c366770d13b24910bc4c06e559c98d6, type: 3}
       propertyPath: m_Name
       value: SoundManager

@@ -8,8 +8,12 @@ public class SoundManager : MonoBehaviour
 
     // AudioSource
     public AudioSource audioSource;
+    // BGM
+    public AudioSource bgm;
     // ジャンプ時の効果音
     public AudioClip jumpSound;
+    // ハイジャンプ時の効果音
+    public AudioClip highJumpSound;
     // スーパージャンプ時の効果音
     public AudioClip superJumpSound;
     // 落下時の効果音
@@ -22,15 +26,27 @@ public class SoundManager : MonoBehaviour
         DontDestroyOnLoad(Instance.gameObject);
     }
 
+    public void DestroyGameObject()
+    {
+        Destroy(gameObject);
+    }
+
     // ジャンプ時の効果音を再生する
     public void PlayJumpSound()
     {
         audioSource.PlayOneShot(jumpSound);
     }
 
+    // ハイジャンプ時の効果音を再生する
+    public void PlayHighJumpSound()
+    {
+        audioSource.PlayOneShot(highJumpSound);
+    }
+
     // スーパージャンプ時の効果音を再生する
     public void PlaySuperJumpSound()
     {
+        StartCoroutine(PauseAudioForSeconds(7f));
         audioSource.PlayOneShot(superJumpSound);
     }
 
@@ -38,5 +54,12 @@ public class SoundManager : MonoBehaviour
     public void PlayFallSound()
     {
         audioSource.PlayOneShot(fallSound);
+    }
+
+    IEnumerator PauseAudioForSeconds(float seconds)
+    {
+        bgm.Pause();
+        yield return new WaitForSeconds(seconds);
+        bgm.UnPause();
     }
 }
