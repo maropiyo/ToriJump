@@ -171,6 +171,7 @@ MonoBehaviour:
   - {fileID: 8136708646687763335, guid: 38395d955a5f4449bb29167d2eedb813, type: 3}
   - {fileID: 7506451992129198861, guid: daf61aa52262b46bd9fbb13db4432dac, type: 3}
   - {fileID: 3331359915313708253, guid: 8118a2531e97d48289125839b678cd6f, type: 3}
+  - {fileID: 5874943327686850521, guid: 05a342003c4114b8a9a31e8941c75175, type: 3}
   floorGap: 1.5
   minX: -2
   maxX: 2
@@ -1028,6 +1029,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 139185432052371548, guid: 2c366770d13b24910bc4c06e559c98d6, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 568435127535641990, guid: 2c366770d13b24910bc4c06e559c98d6, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1072,6 +1077,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2883123302100554218, guid: 2c366770d13b24910bc4c06e559c98d6, type: 3}
+      propertyPath: bgm
+      value: 
+      objectReference: {fileID: 1300538500}
+    - target: {fileID: 2883123302100554218, guid: 2c366770d13b24910bc4c06e559c98d6, type: 3}
+      propertyPath: fallSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a19d94da14a22445cafb45fa90f685e5, type: 3}
+    - target: {fileID: 2883123302100554218, guid: 2c366770d13b24910bc4c06e559c98d6, type: 3}
+      propertyPath: jumpSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 434b269e7c47b491a847b55d148b7b3f, type: 3}
+    - target: {fileID: 2883123302100554218, guid: 2c366770d13b24910bc4c06e559c98d6, type: 3}
+      propertyPath: highJumpSound
+      value: 
+      objectReference: {fileID: 8300000, guid: aaf8eb900e7e34f6497cc030e8638480, type: 3}
+    - target: {fileID: 2883123302100554218, guid: 2c366770d13b24910bc4c06e559c98d6, type: 3}
+      propertyPath: superJumpSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 24742a7e078fe42b2b772a1e95eab351, type: 3}
     - target: {fileID: 5302517957548616016, guid: 2c366770d13b24910bc4c06e559c98d6, type: 3}
       propertyPath: m_Name
       value: SoundManager
@@ -1147,6 +1172,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 706700587073530289, guid: 2043095f4f5b046a6a37500e2555f53f, type: 3}
+      propertyPath: bgm
+      value: 
+      objectReference: {fileID: 1300538500}
     - target: {fileID: 706700587073530289, guid: 2043095f4f5b046a6a37500e2555f53f, type: 3}
       propertyPath: moveSpeed
       value: 8

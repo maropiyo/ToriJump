@@ -37,12 +37,14 @@ public class ResultDirector : MonoBehaviour
     // リスタートボタンが押された時
     public void OnRestartButtonClicked()
     {
+        SoundManager.Instance.DestroyGameObject();
         SceneManager.LoadScene("GameScene");
     }
 
     // タイトルへボタンが押された時
     public void OnToTitleButtonClicked()
     {
+        SoundManager.Instance.DestroyGameObject();
         SceneManager.LoadScene("TitleScene");
     }
 }

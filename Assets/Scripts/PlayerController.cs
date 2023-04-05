@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
     // キャラクター情報のリスト
     private List<CharacterData> characterDataList;
 
-
     // 落下中か
     private bool isFalling = false;
 
@@ -77,7 +76,18 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector3.zero;
             rb.AddForce(transform.up * this.jumpForce * 1.45f);
 
-            // ジャンプ時の効果音を鳴らす
+            // ハイジャンプ時の効果音を鳴らす
+            SoundManager.Instance.PlayHighJumpSound();
+        }
+
+        // 接触したオブジェクトのタグが"SuperJumpFloor"の場合
+        if (collision.gameObject.CompareTag("SuperJumpFloor"))
+        {
+            // 上方向に力を加える
+            rb.velocity = Vector3.zero;
+            rb.AddForce(transform.up * this.jumpForce * 7.0f);
+
+            // スーパージャンプ時のBGMを鳴らす
             SoundManager.Instance.PlaySuperJumpSound();
         }
     }
