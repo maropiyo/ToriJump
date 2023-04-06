@@ -9,7 +9,7 @@ public class ChangeColorRainbow : MonoBehaviour
 
     void Update()
     {
-        hue += Time.deltaTime / 4.0f;
+        hue += Time.deltaTime / 2f;
         if (hue > 1.0f)
         {
             hue -= 1.0f;
