@@ -1100,11 +1100,11 @@ PrefabInstance:
     - target: {fileID: 2883123302100554218, guid: 2c366770d13b24910bc4c06e559c98d6, type: 3}
       propertyPath: jumpSound
       value: 
-      objectReference: {fileID: 8300000, guid: 434b269e7c47b491a847b55d148b7b3f, type: 3}
+      objectReference: {fileID: 8300000, guid: 6a1dfb7bb42724bd6a6d7af444090006, type: 3}
     - target: {fileID: 2883123302100554218, guid: 2c366770d13b24910bc4c06e559c98d6, type: 3}
       propertyPath: highJumpSound
       value: 
-      objectReference: {fileID: 8300000, guid: aaf8eb900e7e34f6497cc030e8638480, type: 3}
+      objectReference: {fileID: 8300000, guid: 1acf09d430c8e4aeca3b9f82a2e43da7, type: 3}
     - target: {fileID: 2883123302100554218, guid: 2c366770d13b24910bc4c06e559c98d6, type: 3}
       propertyPath: superJumpSound
       value: 
