@@ -6,9 +6,10 @@
 
 ## スクリーンショット
 
-![ToriJumpScreenshot1](./docs/images/screenshot_1.png)
-![ToriJumpScreenshot2](./docs/images/screenshot_2.png)
-![ToriJumpScreenshot3](./docs/images/screenshot_3.png)
+||||
+|---|---|---|
+|![ToriJumpScreenshot1](./docs/images/screenshot_1.png)|![ToriJumpScreenshot2](./docs/images/screenshot_2.png)|![ToriJumpScreenshot3](./docs/images/screenshot_3.png)|
+
 
 ## Google Play で入手
 
