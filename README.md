@@ -1,4 +1,4 @@
-# とりジャンプ (Tori Jump)
+# とりジャンプ (TORI JUMP)
 
 ![ToriJumpTitle](./docs/images/feature_graphic.png)
 
